@@ -12,7 +12,7 @@
 ![Image](https://github.com/user-attachments/assets/72e96828-b270-470a-be83-0aabccc24919)
 
 #### ④ 앞에서 작성한 3개 의SQL 문을 한 번에 실행하세요.
-![Image](https://github.com/user-attachments/assets/214f1e64-a0bd-4665-8aeb-8180d68f2bf4)
+![Image](https://github.com/user-attachments/assets/629c1868-61f5-462c-b804-f96314b600da)
 
 ※ 기본적으로는 마지막 쿼리의 결과만 출력됨.  
 이는 워크벤치의 실행 결과(Result Grid)가 하나만 표시되기 때문
