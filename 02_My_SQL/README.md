@@ -53,3 +53,14 @@ Comment 테이블: id, content, post_id
 |mysqlshow	|DB/테이블 구조 확인	|mysqlshow -u root -p|
 |mysqlimport|	CSV 등 외부 데이터| import	mysqlimport --local -u root -p dbname file.csv|
 |mysqlpump|	병렬 백업 도구 (mysqldump보다 빠름)|	mysqlpump -u root -p dbname > dump.sql|
+
+#### 📌 참고: MySQL Workbench로 할 수 있는 유틸리티 기능
+GUI 환경에서 유틸리티 기능:
+
+|기능|	설명|
+|:----:|:----:|
+|Data Export|	mysqldump 기반 백업|
+|Data Import	|SQL 또는 CSV import|
+|Server Status|	mysqladmin처럼 상태 확인|
+|Query Stats	|Slow query, connections 확인|
+Users and Privileges	|사용자 관리|
