@@ -1,6 +1,6 @@
 # KB_ITs_MySQL
 
-This repository is a check list which is the first term practices in KB IT's your life program.
+This repository is a check list which is the fourth term practices in KB IT's your life program.
 - 2025.05.12-2025.00.00
 
 ---
