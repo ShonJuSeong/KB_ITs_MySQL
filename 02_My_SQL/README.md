@@ -1,5 +1,5 @@
 # 	2. 데이터베이스 모델링, MySQL 유틸리티 사용법
-## 데이터베이스 모델링이란?
+## ① 데이터베이스 모델링이란?
 #### 🔹 왜 데이터베이스 모델링이 필요할까?  
 예를 들어,   
 쇼핑몰 웹사이트를 만든다고 할 때,  
@@ -41,3 +41,15 @@ Post 테이블: id, title, content, user_id
 
 Comment 테이블: id, content, post_id  
 
+
+      
+## ② MySQL 유틸리티 사용법
+#### 🔧 1. 자주 쓰는 MySQL 유틸리티 명령어
+|도구 이름	|설명|	사용 예|
+|------|:----:|:----:|
+|mysql	|MySQL에 접속하는 CLI 도구|	mysql -u root -p|
+|mysqldump	|데이터베이스 백업|	mysqldump -u root -p dbname > backup.sql|
+|mysqladmin	|MySQL 서버 상태 확인 및 관리|	mysqladmin -u root -p status|
+|mysqlshow	|DB/테이블 구조 확인	|mysqlshow -u root -p|
+|mysqlimport|	CSV 등 외부 데이터| import	mysqlimport --local -u root -p dbname file.csv|
+|mysqlpump|	병렬 백업 도구 (mysqldump보다 빠름)|	mysqlpump -u root -p dbname > dump.sql|
