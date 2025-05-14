@@ -112,11 +112,11 @@ Users and Privileges	|사용자 관리|
 ✔️ 형태: 성능, 저장 공간 크기, 타입 고려하여 데이터 타입 설정, 인덱스 추가, 제약조건 정의  
 
 
-CREATE TABLE Customer (  
-  customer_id INT AUTO_INCREMENT PRIMARY KEY,  
-  name VARCHAR(50),  
-  phone VARCHAR(20)  
-);  
+CREATE TABLE Customer (                      -- 테이블 만들기
+  customer_id INT AUTO_INCREMENT PRIMARY KEY,       -- PRIMARY KEY: NN,UQ 설정
+  name VARCHAR(50),                              -- VAR : 데이터 크기에 따라 가변적임. 데이터 관리수월  
+  phone VARCHAR(20)                              -- CHAR(50) : 데이터 50차지 / VARCHAR(50) 크기에 따라 데이터 차지량 달라짐.
+);                                               -- CHAR은 항상 크기가 안정적으로 같은 것에만 씀. EX)우편번호 5자리, 주민번호 등
   
 CREATE TABLE Menu (  
   menu_id INT AUTO_INCREMENT PRIMARY KEY,  
