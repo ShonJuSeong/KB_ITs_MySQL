@@ -10,3 +10,5 @@ This repository is a check list which is the fourth term practices in KB IT's yo
 |------|:----:|:----:|:----:|:----:|
 | 01 |DBMS 개요, 설치, 전체 운영 실습 | 01_My_SQL | ✅ | ✅ |
 | 02 |데이터베이스 모델링, MySQL 유틸리티 사용법 | 02_My_SQL | ✅ | ✅ |
+| 03 |SQL 기본 | 03_My_SQL | ✅ | ☐ |
+
