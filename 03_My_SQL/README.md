@@ -79,7 +79,8 @@
 |Create	|새로운 데이터 만들기|INSERT |INTO	INSERT INTO usertbl (name) VALUES ('홍길동');|
 |Read|데이터 조회|	SELECT	|SELECT * FROM usertbl;|
 |Update	|	기존 데이터 수정|UPDATE	|UPDATE usertbl SET height=180 WHERE name='홍길동';|
-|Delete	|	데이터 삭제|DELETE |FROM	DELETE FROM usertbl WHERE name='홍길동';|
+|Delete	|	데이터 삭제|DELETE |FROM	DELETE FROM usertbl WHERE name='홍길동';|  
+ ##### ※ 나머지 DDL, DCL, TCL은 구조, 권한, 트랜잭션을 담당해서 CRUD와 직접 관련은 없음
 
 #### ✅ 데이터 삭제 3가지 방식 비교
 |명령어	|복구 가능 여부|	설명|
