@@ -1,7 +1,6 @@
 # 3. SQL 기본  
 
-1.
-2.
+
 
 ## SQL 명령어 분류
 ### ✅ SQL 명령어 분류
@@ -75,12 +74,12 @@
 
 
 #### ✅ DML = CRUD (Create, Read, Update, Delete)
-|동작	|명령어	|예시|
-|:----:|:----:|:----:|
-|Create	|INSERT |INTO	INSERT INTO usertbl (name) VALUES ('홍길동');|
-|Read|	SELECT	|SELECT * FROM usertbl;|
-|Update	|UPDATE	|UPDATE usertbl SET height=180 WHERE name='홍길동';|
-|Delete	|DELETE |FROM	DELETE FROM usertbl WHERE name='홍길동';|
+|동작	|설명|명령어	|예시|
+|:----:|:----:|:----:|:----:|
+|Create	|새로운 데이터 만들기|INSERT |INTO	INSERT INTO usertbl (name) VALUES ('홍길동');|
+|Read|데이터 조회|	SELECT	|SELECT * FROM usertbl;|
+|Update	|	기존 데이터 수정|UPDATE	|UPDATE usertbl SET height=180 WHERE name='홍길동';|
+|Delete	|	데이터 삭제|DELETE |FROM	DELETE FROM usertbl WHERE name='홍길동';|
 
 #### ✅ 데이터 삭제 3가지 방식 비교
 |명령어	|복구 가능 여부|	설명|
