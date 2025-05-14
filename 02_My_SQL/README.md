@@ -64,3 +64,62 @@ GUI 환경에서 유틸리티 기능:
 |Server Status|	mysqladmin처럼 상태 확인|
 |Query Stats	|Slow query, connections 확인|
 Users and Privileges	|사용자 관리|
+
+
+#### 🌸 ### 예시) 카페에서 고객이 메뉴를 주문하고 결제하는 시스템을 만드는 경우
+
+##### ✅ 개념적 모델링 :
+✔️ 목적: "어떤 업무 개념이 있는지?"를 파악
+✔️ 형태: 업무 중심 + 관계 위주
+
+
+- 주요 개체(엔티티) : 고객 (Customer), 메뉴 (Menu), 주문 (Order)
+- 관계(Relationship) : 고객은 주문을 한다,  주문은 메뉴를 포함한다
+
+##### ✅ 논리적 모델링
+✔️ 목적: 개념을 구조화(테이블 형태)
+✔️ 형태: 엔티티 → 테이블, 속성 → 컬럼
+
+
+- 고객 테이블 (Customer) : 고객 ID (PK), 이름, 전화번호
+- 메뉴 테이블 (Menu) : 메뉴 ID (PK), 메뉴명, 가격
+- 주문 테이블 (Order) : 주문 ID (PK), 고객 ID (FK), 주문 일시
+- 주문 상세 테이블 (OrderItem) : 주문 ID (FK), 메뉴 ID (FK), 수량
+
+##### ✅ 물리적 모델링
+✔️ 목적: 실제 DB에 맞게 구현(mysql8이면 이 버전에 맞게 구현)
+✔️ 형태: 성능, 저장 공간 크기, 타입 고려하여 데이터 타입 설정, 인덱스 추가, 제약조건 정의
+
+
+CREATE TABLE Customer (  
+  customer_id INT AUTO_INCREMENT PRIMARY KEY,  
+  name VARCHAR(50),  
+  phone VARCHAR(20)  
+);  
+  
+CREATE TABLE Menu (  
+  menu_id INT AUTO_INCREMENT PRIMARY KEY,  
+  name VARCHAR(100),  
+  price DECIMAL(6,2)  
+);  
+  
+CREATE TABLE Order (  
+  order_id INT AUTO_INCREMENT PRIMARY KEY,  
+  customer_id INT,  
+  order_date DATETIME,  
+  FOREIGN KEY (customer_id) REFERENCES Customer(customer_id)  
+);  
+  
+CREATE TABLE OrderItem (  
+  order_id INT,  
+  menu_id INT,  
+  quantity INT,   
+  PRIMARY KEY (order_id, menu_id),  
+  FOREIGN KEY (order_id) REFERENCES `Order`(order_id),  
+  FOREIGN KEY (menu_id) REFERENCES Menu(menu_id)  
+);   
+
+
+
+
+
