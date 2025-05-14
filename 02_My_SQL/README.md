@@ -65,6 +65,27 @@ GUI 환경에서 유틸리티 기능:
 |Query Stats	|Slow query, connections 확인|
 Users and Privileges	|사용자 관리|
 
+### 🔑 기본적인 제약 조건 (Constraints) 정리
+|약어	|이름	|의미|
+|:----:|:----:|:----:|
+|PK|	Primary Key (기본 키)	|테이블에서 유일하고 필수적인 값. 중복 ❌, NULL ❌.|
+|FK	|Foreign Key (외래 키)	|다른 테이블의 기본 키를 참조하는 컬럼. 테이블 간 관계 설정에 사용.|
+|NN	|Not Null (널 허용 안 함)	|값이 반드시 있어야 함 (NULL ❌)|
+|UQ	|Unique (유일)	|중복 ❌ 하지만 NULL은 허용. PK랑 비슷하지만 NULL은 가능.|
+|AI|	Auto Increment (자동 증가)|	숫자가 자동으로 1씩 증가. 보통 PK에 사용.|
+|DEFAULT	|기본값|	값을 넣지 않았을 때 자동으로 지정되는 기본값.|
+|CHECK	|조건 검사	|입력 값에 조건을 설정할 수 있음 (예: 나이는 0 이상만). (MySQL 8.0부터 지원)|
+
+### 💡 쉽게 요약하면
+|제약조건|의미|
+|:----:|:----:|
+|PRIMARY KEY	|테이블을 대표하는 열. 중복 ❌, NULL ❌|
+|FOREIGN KEY	|다른 테이블을 참조하는 열|
+|NOT NULL	|빈 값 허용 안 됨|
+|UNIQUE|	중복된 값 금지 (NULL은 허용)|
+|AUTO_INCREMENT	|자동 숫자 증가|
+|DEFAULT|	입력 안 하면 자동으로 넣을 값|
+|CHECK|	입력 값의 조건 제한|
 
 #### 🌸 ### 예시) 카페에서 고객이 메뉴를 주문하고 결제하는 시스템을 만드는 경우
 
