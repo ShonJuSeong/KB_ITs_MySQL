@@ -6,7 +6,7 @@
 ### ✅ SQL 명령어 분류
 |분류	|이름|	설명|
 |:----:|:----:|:----:|
-|DDL|	Data Definition Language	|테이블 정의/수정/삭제 (CREATE, DROP, ALTER, TRUNCATE)|
+|DDL|	Data Definition Language	|테이블 정의/수정/삭제 (CREATE, DROP, ALTER, TRUNCATE)| 
 |DML|	Data Manipulation Language|	데이터 조작 (SELECT, INSERT, UPDATE, DELETE)|
 |DCL|	Data Control Language	|권한 관리 (GRANT, REVOKE)|
 |TCL|	Transaction Control Language|	트랜잭션 제어 (COMMIT, ROLLBACK, SAVEPOINT)|
@@ -27,8 +27,12 @@
 💡 DDL은 대부분 "틀(형식)"을 다루는 거라 한 번 실행하면 되돌릴 수 없음  
 즉, ROLLBACK 안 됨  
 
-### 🔷 2. DML (Data Manipulation Language)
-👉 실제 데이터를 넣고, 수정하고, 삭제하는 명령어  
+### 🔷 2. DML (Data Manipulation Language) (부분완료)
+👉 실제 데이터를 넣고, 수정하고, 삭제하는 명령어 / 조작어, 제어어   
+// MySQL+JSP or Spring / MySQL+Web 등과 합쳤을 때,   
+A : insert (MySQL)  
+B : Select (Web) <- A가 추가한 내용이 적용되지 않는 경우가 있음.  
+autocommit이 안된 것 -> 해결 방법 : A가 commit; / auto commit 활성화 하면됨.   
 
 #### ✅ 대표 명령어
 |명령어|	설명	|예시|
@@ -43,6 +47,7 @@
 
 ### 🔷 3. DCL (Data Control Language)
 👉 사용자에게 권한을 주거나 빼앗는 명령어
+DBA -> A(팀장) -> B(과장) -> C(신입)
 
 #### ✅ 대표 명령어
 |명령어	|설명	|예시|
@@ -50,10 +55,14 @@
 |GRANT|	사용자에게 특정 권한 부여|	GRANT SELECT ON usertbl TO user1;|
 |REVOKE|	사용자 권한 회수	|REVOKE SELECT ON usertbl FROM user1;|
 
+// GRANT : 회사의 직원이 되면 권한 부여받고, 퇴사하면 REVOKE  
+
 💡 예를 들어 어떤 사람이 특정 테이블을 읽을 수 있게 허락하거나 금지하는 기능.  
 
-### 🔷 4. TCL (Transaction Control Language)  
-👉 데이터 변경 작업을 저장하거나 되돌리는 명령어  
+### 🔷 4. TCL (Transaction Control Language)   (완전완료)
+👉 데이터 변경 작업을 저장하거나 되돌리는 명령어     
+COMMIT (완전 완료)  
+ROLLBACK (복구)  
 
 #### ✅ 대표 명령어
 |명령어	|설명|	예시|
