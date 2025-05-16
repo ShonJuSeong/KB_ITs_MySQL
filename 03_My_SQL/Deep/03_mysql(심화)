@@ -1,0 +1,46 @@
+use sqldb;
+-- 1-1번
+select userid as '사용자 아이디', 
+sum(amount) as'총 구매 개수' 
+from buytbl 
+group by userid;
+
+-- 1-2번
+select userid as '사용자 아이디', sum(price*amount) as '총 구매액' from buytbl group by userid;
+
+
+-- 2-1번
+select avg(amount) as '평균 구매 개수' from buytbl;
+
+-- 2-2번 
+select userID, avg(amount) as '평균 구매 개수' from buytbl group by userid;
+
+-- 3번
+select name, height from usertbl 
+where 
+height = (select max(height)from usertbl) or 
+height = (select min(height)from usertbl);
+
+-- 4번
+select count(mobile1) as '휴대폰이 있는 사용자' from usertbl;
+
+-- 5-1번
+select userid as '사용자', sum(amount*price) as '총 구매액' from buytbl group by userid;
+
+-- 5-2번
+select userid as '사용자', sum(price*amount) as '총 구매액' from buytbl group by userid;
+select userid as '사용자', sum(amount*price) as '총 구매액' from buytbl group by userid having sum(amount*price) > 1000 ; 
+
+
+-- 6-1번
+use world;
+
+
+-- 6-2번
+select min(population) as '최솟값' from city group by population'kor');
+
+-- 6-3번
+-- 6-4번
+-- 6-5번
+-- 6-6번
+-- 6-7번
