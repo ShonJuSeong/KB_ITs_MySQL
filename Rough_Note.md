@@ -67,3 +67,4 @@ UNION, UNION ALL, NOT IN, IN
 
  먼저쓴게 lift고, 나중에 쓴게 right다.
 
+서브쿼리 및 기타 내용 
