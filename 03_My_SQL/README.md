@@ -78,7 +78,7 @@ ROLLBACK (복구)
 |:---:|:---:|:---:|:---:|:---:|
 |DDL	|Data Definition Language|	테이블 만들고 구조 바꾸기	|CREATE, DROP, ALTER, TRUNCATE|	❌|
 |DML	|Data Manipulation Language	|데이터 추가/조회/수정/삭제	|SELECT, INSERT, UPDATE, DELETE|	⭕|
-|DCL	|Data Control Language|	사용자 권한 관리	|GRANT, REVOKE|	⭕|
+|DCL	|Data Control Language|	사용자 권한 관리	|GRANT, DENY, REVOKE|	⭕|
 |TCL	|Transaction Control Language	|데이터 변경 저장/취소|	COMMIT, ROLLBACK, SAVEPOINT	|⭕|
 
 
