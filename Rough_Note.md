@@ -139,3 +139,20 @@ SHOW FULL TABLES IN 데이터베이스명 WHERE TABLE_TYPE = 'VIEW';
 
 ⸻
 
+
+## 테이블 문법
+DROP DATABASE   
+CREATE DATABASE  
+USE DATABASE  
+  
+usertbl 만들기   
+DROP TABLE IF EXISTS usertbl;  
+CREATE TABLE usertbl(....)  
+
+buytbl
+DROP TABLE IF EXISTS buytbl;
+CREATE TABLE buytbl(
+....
+FOREIGN KEY(userid) REFERENCES usertbl(USERID)
+-> 외래키로 usertbl의 USERID를 사용
+)
