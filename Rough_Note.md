@@ -139,20 +139,24 @@ SHOW FULL TABLES IN 데이터베이스명 WHERE TABLE_TYPE = 'VIEW';
 
 ⸻
 
+## 복합키
+※ 권장사항은 아님  
+두개 이상의 column을 결합, 하나의 pk/uk 구성
+-> 복합키가 pk가 될 수 있음.
+-> 하나가 unique, null이 안되는 경우
+-> 여러개 컬럼을 결합 했을 대, pk조건에 만족하는 경우
 
-## 테이블 문법
-DROP DATABASE   
-CREATE DATABASE  
-USE DATABASE  
-  
-usertbl 만들기   
-DROP TABLE IF EXISTS usertbl;  
-CREATE TABLE usertbl(....)  
+userid / productid / price / buytbl  
+apple, 100, 1000, 2025-05-19  
+apple, 200, 2000, 2025-05-20  
 
-buytbl
-DROP TABLE IF EXISTS buytbl;
-CREATE TABLE buytbl(
-....
-FOREIGN KEY(userid) REFERENCES usertbl(USERID)
--> 외래키로 usertbl의 USERID를 사용
-)
+memeber userid(pk) - apple, ice
+board boardid(pk), userid(fk) - 1: apple, 2: ice, 3: apple
+
+외래키 옵션 조선 / 제약 조건
+ON DELETE CASCATE // ON UPDATE CASCADE
+
+ALTER TABLE buyTBL
+ADD CONSTRAINT FK_userTBLbuyTBL
+FOREIGN KEY(userID)
+REFERENCES
