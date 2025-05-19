@@ -68,3 +68,74 @@ UNION, UNION ALL, NOT IN, IN
  먼저쓴게 lift고, 나중에 쓴게 right다.
 
 서브쿼리 및 기타 내용 
+
+---
+## 5. 19.월
+데이터형식   
+CHAR(n) / VARCHAR(n)  두개 구분은 아주 기본.
+
+CHAR  
+TEXT  
+BLOB  
+ENUM  
+SET  
+
+### 날짜
+NOW 정말 많이 씀
+
+### 집합  -> 실무에서 사용빈도는 적지만 쉬운 것이니 알아둘 것.
+UNION : 단순 합침  
+UNION ALL : 중복제거 후 합침  
+/ NOT IN / IN
+
+#### JOIN 
+1. INNER JOIN (TABLE1 ∩ TABLE2)
+2. LEFT JOIN (TABLE1 ∋ TABLE2)
+3. RIGHT JOIN! (TABLE1 ∈ TABLE2)
+4. [image](https://github.com/user-attachments/assets/7d6b98f8-c44f-4a61-8cd2-a2daa00a8063)
+
+
+///
+
+#### 문법
+AS 
+NAME AS
+ON
+
+## 강사님 필기
+👍 뷰
+
+MySQL 8에서 **기본 테이블(Base Table)**을 삭제(DROP TABLE)하더라도, 해당 테이블을 기반으로 만든 **뷰(View)**는 자동으로 삭제되지 않음.
+
+⸻
+
+1. 테이블 삭제 시 뷰는 사라지지 않는다
+• DROP TABLE 원본테이블명; 명령을 실행해도, 그 테이블을 참조하고 있던 뷰(CREATE VIEW ...)는 데이터베이스에 그대로 남아 있음
+• 하지만 그 뷰는 “깨진 상태(broken view)“가 되어 사용할 수 없음
+• 이후 그 뷰를 사용하려고 하면 다음과 같은 에러가 발생
+
+ERROR 1356 (HY000): View '뷰이름' references invalid table(s) or column(s) or function(s) or definer/invoker of view lack rights to use them
+
+⸻
+
+2. 뷰를 확인하려면
+
+SHOW FULL TABLES IN 데이터베이스명 WHERE TABLE_TYPE = 'VIEW';
+
+⸻
+
+3. 뷰를 다시 사용하려면
+• 뷰가 참조하는 원본 테이블이 존재해야함.
+• 테이블을 복원하거나, 뷰를 다시 정의(CREATE OR REPLACE VIEW) 해야함.
+
+⸻
+
+4. 뷰를 함께 정리하려면
+• 뷰를 먼저 삭제한 후, 테이블을 삭제하는 것이 안전
+• 또는, 의존 관계를 분석할 수 있음.
+1. SHOW CREATE VIEW 뷰이름; 으로 어떤 테이블을 참조하는지 확인
+2. DROP VIEW 뷰이름;
+3. DROP TABLE 테이블이름;
+
+⸻
+
