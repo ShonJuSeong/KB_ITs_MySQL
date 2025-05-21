@@ -7,13 +7,13 @@
 ### [Intelli J]
 1. intellij Datasource 기능 설정 -> 우상단 드럼통 -> Data Source -> MySQL
 2. port / user / password / Database 명 일치  -> apply (이전에 Test Connection)
-3. test폴더 -> ConncetionTest클래스 생성
-4. resource폴더 -> application.properties ->
+3. test폴더 -> ConncetionTest클래스 생성 ★ DB연결
+4. resource폴더 -> application.properties   ★  사용자 연결
 ```java
 driver=com.mysql.cj.jdbc.Driver
 url=jdbc:mysql://127.0.0.1:3306/jdbc_ex
 id=scoula
 password=1234
 ```
-5. JDBCUtil 클래스 작성
+5. JDBCUtil 클래스 작성 ★ 네트워크 연결 확인 및 테스트
 
