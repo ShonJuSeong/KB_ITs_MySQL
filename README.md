@@ -4,7 +4,9 @@ This repository is a check list which is the fourth term practices in KB IT's yo
 - 2025.05.12-2025.00.00
 
 ---
-- complete: ✅, uncomplete: ☐ , In Progress :🔄
+- ✅ 완료 (Complete)
+- 🔄 진행 중 (In Progress)
+- ☐ 미완료 (Not Started)
 
 | 항목 |  제목  | 디렉토리명 | 기본 | 심화 |
 |------|:----:|:----:|:----:|:----:|
