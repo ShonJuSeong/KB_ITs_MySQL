@@ -22,3 +22,10 @@ SELECT * FROM employees WHERE emp_no = 10001;
 | 🔹 **비클러스터형 인덱스** (Non-clustered) | O      | - 인덱스는 따로, 데이터는 따로 저장<br>- 보조 인덱스                         | `CREATE INDEX idx_salary ON employees(salary);`           |
 | 🔹 **전체 텍스트 인덱스** (FULLTEXT)      | O      | - 긴 텍스트에서 **검색어 기반 조회**용<br>- 뉴스/게시글 제목 등                 | `CREATE FULLTEXT INDEX idx_title ON articles(title);`     |
 | 🔹 **공간 인덱스** (SPATIAL)           | O      | - 좌표, 위치정보(GIS 데이터) 검색용<br>- `GEOMETRY`, `POINT` 등 자료형 전용 | `CREATE SPATIAL INDEX idx_location ON maps(loc);`         |
+
+
+| 구분     | 설명                                                              |
+| ------ | --------------------------------------------------------------- |
+| 인덱스 구조 | 대부분의 인덱스는 **B-Tree** 구조 사용                                      |
+| 사용 목적  | 검색 속도 향상, 조인/정렬 최적화, 중복 방지 등                                    |
+| 주의사항   | - 인덱스가 많을수록 `INSERT`, `UPDATE`, `DELETE` 성능 저하<br>- 저장 공간 추가 소모 |
