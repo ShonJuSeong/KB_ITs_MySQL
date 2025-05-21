@@ -35,14 +35,15 @@ stmt.close();
 conn.close();  
 
 #### ✅ 전체 코드 예시
+```java
 import java.sql.*;
 
-public class JDBCExample {
-    public static void main(String[] args) {
-        try {
-            Class.forName("com.mysql.cj.jdbc.Driver"); // 드라이버 로드
-            Connection conn = DriverManager.getConnection(
-                "jdbc:mysql://localhost:3306/testdb", "user", "1234");
+public class JDBCExample {  
+    public static void main(String[] args) {  
+        try {  
+            Class.forName("com.mysql.cj.jdbc.Driver"); // 드라이버 로드  
+            Connection conn = DriverManager.getConnection(  
+                "jdbc:mysql://localhost:3306/testdb", "user", "1234");  
 
             Statement stmt = conn.createStatement();
             ResultSet rs = stmt.executeQuery("SELECT * FROM members");
@@ -59,3 +60,4 @@ public class JDBCExample {
         }
     }
 }
+```
