@@ -16,4 +16,5 @@ This repository is a check list which is the fourth term practices in KB IT's yo
 |04|SQL 고급 - 조인|04_MySQL | ☐ | ☐ |
 |05|테이블, 뷰|05_MySQL | 🔄 | 🔄 |
 |06|인덱스, 사용자 관리|06_MySQL | ☐ | ☐ |
-|07|Java 연동 JDBC 프로그래밍|07_MySQL | ✅ | ☐ |
+|07|Java 연동 JDBC 프로그래밍|07_MySQL | ✅ | 🔄 |
+|08| Java |연동| JDBC |프로그래밍-Travel| ☐ | ☐ |
