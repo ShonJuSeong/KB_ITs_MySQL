@@ -63,5 +63,36 @@ public class JDBCExample {
 }
 ```
 
+![image](https://github.com/user-attachments/assets/a00f71c6-d3ef-4b8a-8c2d-508c8124c839)
 
+--
+## JUnit / Java + Unit(단위)
+자바 프로그래밍 언어를 위한 단위 테스트(Unit Test) 프레임워크  
+즉, 자바 코드의 특정 메서드나 클래스가 의도한 대로 작동하는지 자동으로 검사하는 도구
+## TDD	(Test-Driven Development)
+테스트 주도 개발을 의미. 개발을 할 때 코드보다 테스트를 먼저 작성하는 방식의 개발 방법론
 
+| 어노테이션                | 설명                    |
+| -------------------- | --------------------- |
+| `@Test`              | 테스트 메서드임을 표시          |
+| `@BeforeEach`        | 각 테스트 전에 실행되는 초기화 메서드 |
+| `@AfterEach`         | 각 테스트 후에 실행되는 정리 메서드  |
+| `@BeforeAll`         | 전체 테스트 실행 전 1회 실행     |
+| `@AfterAll`          | 전체 테스트 후 1회 실행        |
+| `@DisplayName("이름")` | 테스트에 이름 붙이기 (가독성 향상)  |
+| `@Disabled`          | 테스트 일시적으로 실행 제외       |
+
+```java
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
+public class CalculatorTest {
+
+    @Test
+    void testAdd() {
+        Calculator cal = new Calculator();
+        int result = cal.add(2, 3);
+        assertEquals(5, result);  // 예상값과 실제값 비교
+    }
+}
+```
