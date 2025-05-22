@@ -1,4 +1,9 @@
 # 05 테이블, 뷰
+## 
+## ROW(행)과 열(column)
+![Image](https://github.com/user-attachments/assets/81b417eb-3684-4edf-b082-c1a1e0938ad2)  
+![Image](https://github.com/user-attachments/assets/4a919dec-9f71-40d2-ad4d-c6c6b3419d17)
+
 
 ## 기본키 후보키 대체키 복합키 외래키 
 
@@ -68,4 +73,7 @@
 ##### 예: 계좌 이체 도중 첫 번째 계좌에서 돈은 빠졌는데, 두 번째 계좌에 입금은 실패했다면?
 ##### → 데이터 불일치 발생. 트랜잭션을 사용하면 이런 상황을 방지할 수 있습니다.
 
+
+
+## 키 정의 
 
