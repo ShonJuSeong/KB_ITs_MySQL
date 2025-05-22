@@ -19,7 +19,7 @@ CREATE TABLE usertbl(
 -- 2번
 DROP TABLE IF EXISTS buytbl;
 CREATE TABLE buytbl(
-	num			INT			NOT NULL AUTO_INCREMENT UNIQUE PRIMARY KEY,
+	num			INT			AUTO_INCREMENT UNIQUE PRIMARY KEY,
     userID		CHAR(8) 	NOT NULL,
     prodName 	CHAR(6) 	NOT NULL,
 	groupName	CHAR(4) 	NULL,
@@ -43,40 +43,50 @@ SELECT * FROM buytbl;
     -- 순서 오류 -> 
  INSERT INTO buytbl VALUES (NULL, 'KBS', '운동화', NULL, 30, 2 );
  INSERT INTO buytbl VALUES (NULL, 'KBS', '노트북', '전자', 1000, 1 );
- INSERT INTO buytbl VALUES (NULL, 'JYP', '모니터', '전자', 200, 1)
-    -- > 이건 괜찮
+ INSERT INTO buytbl VALUES (NULL, 'JYP', '모니터', '전자', 200, 1);
+    --  > 이건 괜찮
+ SELECT * FROM buytbl;
  
- -- 6번
-DROP TABLE IF EXISTS usertbl;
-CREATE TABLE usertbl (
-	userID			CHAR(8) NOT NULL PRIMARY KEY,
-    name			VARCHAR(10) NOT NULL,
-    birthyear		NOT NULL
-);
-SELECT * FROM usertbl;
-    
--- 7번 
-DROP TABLE IF EXISTS prodTbl;
-CREATE TABLE prodTbl (
-	prodCode	CHAR(3) PRIMARY KEY,
-    prodID		CHAR(4) NOT NULL,
-    prodDate	DATE NOT NULL,
-    proCur		CHAR(10) NULL
-);
-
-SELECT * FROM usertbl AND buytbl;
+ -- 6번 다음 컬럼을 가지는 usertbl을 정의하세요.
 DROP TABLE IF EXISTS buytbl;
 DROP TABLE IF EXISTS usertbl;
 CREATE TABLE usertbl (
-	userID 		CHAR(8) 	NOT NULL,
-	name 		VARCHAR(10) NOT NULL,
-	birthYear 	INT 		NOT NULL,
-CONSTRAINT PRIMARY KEY PK_userTBL_userID(userID)
+	userID			CHAR(8) NOT NULL,
+    name			VARCHAR(10) NOT NULL,
+    birthyear		INT NOT NULL,
+    CONSTRAINT PRIMARY KEY PK_userTBL_userID(userID)
+);
+SHOW TABLES;
+DESC usertbl;
+SELECT * FROM usertbl;
+    
+-- 7번 다음 컬럼을 가지는 prodTbl을 정의하세요.
+DROP TABLE IF EXISTS prodTbl;
+CREATE TABLE prodTbl (
+	prodCode	CHAR(3) NOT NULL,
+    prodID		CHAR(4) NOT NULL,
+    prodDate	DATETIME NOT NULL,
+    proCur		CHAR(10) NULL,
+CONSTRAINT PK_prodTbl_prodCode_prodID
+PRIMARY KEY (prodCode, prodID)
 );
 
-    SHOW TABLES; -- 테이블 목록보기
-    DESC TABLES; -- 테이블 구조보기
+SELECT * FROM usertbl AND buytbl;
 
+
+-- DROP TABLE IF EXISTS buytbl;
+-- DROP TABLE IF EXISTS usertbl;
+-- CREATE TABLE usertbl (
+-- 	userID 		CHAR(8) 	NOT NULL,
+-- 	name 		VARCHAR(10) NOT NULL,
+-- 	birthYear 	INT 		NOT NULL,
+-- CONSTRAINT PRIMARY KEY PK_userTBL_userID(userID)
+-- );
+
+--     SHOW TABLES; -- 테이블 목록보기
+--     DESC TABLES; -- 테이블 구조보기
+
+USE SQLDB;
 
 CREATE VIEW v_userbuytbl
 AS
@@ -85,3 +95,6 @@ SELECT U.userid, U.name, B.prodName, U.addr,
 FROM usertbl U
 	INNER JOIN buytbl B
 	ON U.userid = B.userid;
+
+SELECT * FROM v_userbuytbl WHERE name = '김범수';
+    
