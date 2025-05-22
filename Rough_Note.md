@@ -247,3 +247,10 @@ SELECT에서 WHERE, ORDER BY, JOIN 등을 사용할 때 성능 향상
 | **클러스터형 인덱스** (Clustered Index)      | 테이블 자체가 인덱스로 구성됨 (MySQL InnoDB에서 기본키 기준) |
 | **비클러스터형 인덱스** (Non-Clustered Index) | 인덱스와 테이블이 분리되어 있음 (보통 보조 인덱스 형태)         |
 
+
+## JDBC Java Database Connectivity
+-
+-- 데이터 베이스와 연결해서 입출력을 지원  
+-- 데이터 베이스 관리시스템(DBMS) 종류와 상관없이 동일하게 사용할 수 있는 클래스와 인터페이스로 구성  
+
+
