@@ -18,29 +18,87 @@ select userID, avg(amount) as '평균 구매 개수' from buytbl group by userid
 -- 3번
 select name, height from usertbl 
 where 
-height = (select max(height)from usertbl) or 
+height = (select max(height)from usertbl) OR 
 height = (select min(height)from usertbl);
 
--- 4번
+-- 4번 
 select count(mobile1) as '휴대폰이 있는 사용자' from usertbl;
+-- 8명
+select count(*) as '휴대폰이 있는 사용자' from usertbl; -- 10명 나옴 -> *은 NULL값도 포함 함.
+-- COUNT는 별이 있는 것과 없는 것의 차이를 알아야 함. COUNT(*)
 
 -- 5-1번
 select userid as '사용자', sum(amount*price) as '총 구매액' from buytbl group by userid;
 
 -- 5-2번
 select userid as '사용자', sum(price*amount) as '총 구매액' from buytbl group by userid;
-select userid as '사용자', sum(amount*price) as '총 구매액' from buytbl group by userid having sum(amount*price) > 1000 ; 
+select userid as '사용자', sum(amount*price) as '총 구매액' 
+from buytbl 
+group by userid having sum(amount*price) >= 1000 ; 
 
 
 -- 6-1번
 use world;
-
+SELECT SUM(POPULATION) FROM CITY WHERE COUNTRYCODE = 'KOR';
 
 -- 6-2번
-select min(population) as '최솟값' from city group by population'kor');
+select min(population) as '최솟값' from city WHERE COUNTRYCODE = 'kor';
 
 -- 6-3번
+SELECT AVG(POPULATION) FROM CITY WHERE COUNTRYCODE = 'KOR';
+
 -- 6-4번
--- 6-5번
--- 6-6번
--- 6-7번
+SELECT MAX(POPULATION) AS '최댓값' FROM CITY WHERE COUNTRYCODE = 'KOR';
+
+-- 6-5번 country 테이블 각 레코드의Name 칼럼의글자수를표시하시오
+SELECT name from country;
+
+-- 6-6번 Country테이블의나라명(Name 칼럼)을앞세글자만대문자로표시하시오.
+select name as '나라명' from country;
+
+-- 6-7번. country 테이블에서 이름과 소수점 첫째 자리까지 반올림된 기대수명을 함께 출력하시오.
+select name as '이름' , round(lifeexpectancy,1) as '기대수명' from country;
+
+-- 7번. employees db 에서 각 부서 별 관리자를 출력하세요. / 단, 현 재직자만 출력한다.
+USE employees;
+SELECT * FROM dept_manager WHERE to_date = '9999-01-01';
+
+-- 8번. 부서번호 d005 부서의 현재 관리자 정보를 출력하세요.
+-- SELECT * FROM dept_manager WHERE to_date = '9999-01-01' GROUP BY dept_no = 'doo5';
+SELECT * FROM  employees 
+WHERE emp_no  = 
+(SELECT emp_no FROM dept_manager 
+WHERE to_date = '9999-01-01' 
+AND dept_no = 'd005');
+
+-- employees 테이블에서 페이지 네이션으로 페이지를 추출 하려고한다. 다음 조건 하에서 8번 페이지의 데이터를 출력하세요.
+-- 9-1번. 입사일을 내림차순으로 정렬한다.
+SELECT * FROM employees ORDER BY hire_date DESC;
+-- 9-2번. 한 페이지당 20명의 정보를 출력한다
+SELECT * FROM employees ORDER BY hire_date DESC LIMIT 140, 20;
+-- > 8페이지니깐 140번째부터 시작해서 20번째까지 출력
+SELECT * FROM employees ORDER BY hire_date DESC LIMIT 140, 20; 
+-- offset, amount (offset : 몇개의 행을 건너뛸지 / amount : 건너뛴 후 출력할 행의 수)
+-- offset : (page-1) * amount (페이징 처리 공식)
+
+-- 10번 employees db에서 재직자의 총수를 구하시오. / 재직자의 to_date값은 '9999-01-01'로 저장되어 있음
+SELECT COUNT(*) FROM dept_emp WHERE to_date = '9999-01-01';
+
+-- 11번employees db에서 재직자의 평균 급여를 출력하시오.
+SELECT AVG(salary) FROM salaries WHERE to_date = '9999-01-01';
+
+-- 12번 재직자 전체 평균 급여보다 급여를 더 많이 받는 재직자를 출력하세요.
+SELECT * 
+FROM salaries 
+WHERE to_date = '9999-01-01'
+AND salary > (
+SELECT AVG(salary) 
+FROM salaries 
+WHERE to_date = '9999-01-01');
+
+-- 13번 employees db 에서 각 부서별 재직자의 수를 구하시오./ 부서번호로 구분하고, 부서번호로 오름차순 정렬하여 출력한다.
+use employees;
+select dept_no, count(*) from dept_emp 
+where to_date = '9999-01-01'
+group by dept_no
+order by dept_no;
