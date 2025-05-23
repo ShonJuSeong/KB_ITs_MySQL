@@ -24,7 +24,7 @@
 | **`FOREIGN KEY`**       | 다른 테이블의 `PRIMARY KEY`를 참조 → 테이블 간 관계 설정      | `FOREIGN KEY(userId) REFERENCES usertbl(userID)` |
 | **복합키 (Composite Key)** | 여러 컬럼을 조합해서 기본키로 사용                          | `PRIMARY KEY (userId, prodName)`                 |
 
-
+![Image](https://github.com/user-attachments/assets/c393900f-b2e0-46c1-99ca-e91937febaec)  
 ## 🔍테이블 예제
 ### 📄employees 테이블
 | emp\_id | name    | dept\_id |
