@@ -43,18 +43,23 @@ INSERT INTO stdclubtbl VALUES
 -- select * from stdtbl stdname, addr
 -- inner join on clubtbl clubName roomNo
 -- inner join on stdclubtbl clubName;
-select s.stdName, s.addr, c.clubName, C.roomNo
-from stdtbl S
-inner join stdclubtbl SC 
-ON 
+select s.stdName, s.addr, c.clubName, C.roomNo --
+from stdtbl S				
+inner join stdclubtbl SC 		
+ON S.stdName = SC.stdName	
 inner join clubtbl C
-ON 
-order by
+ON C.clubName = SC.clubName
+order by S.stdName;			-- order by : 정렬 stdName을 오름차순(asc로) order by stdName DESC(내림차순)
 
+-- 1-2번 ○ 동아리를 기준으로 가입한 학생의 목록을 출력하세요. 출력정보: clubName, roomNo, stdName, addr
+select C.clubName, C.roomNo, S.stdName, S.addr
+from clubtbl C
+inner join stdclubtbl SC
+on C.clubName = SC.clubName
+inner join stdtbl S
+on S.stdName = SC.stdName
+order by C.clubName;
 
--- 1-2번 ○ 동아리를기준으로가입한학생의목록을출력하세요. 출력정보: clubName, roomNo, stdName, addr
-select * from clubtbl where clubName, roomNo
-inner join on stdtbl where stdName, addr;
 -- ---------------------------------------------------------------------------------
 USE sqldb;
 
@@ -78,3 +83,22 @@ INSERT INTO empTbl VALUES('이주임', '윤차장', '3333-1-1');
 
 -- 2번 앞에서 추가한 테이블에서 '우대리'의 상관 연락처 정보를 확인하세요
 -- 출력할 정보 / 부하직원, 직속상관, 직속상관 연락처
+select
+emp as '부하직원', manager as '직속상관', empTel as '직속상관 연락처'
+from emptbl
+where emp = '우대리';
+-- 우대리 출력해서 직속상관 누군지 확인 --> 이부장
+
+SELECT
+A.emp AS '부하직원', 
+B.emp AS '직속상관', 
+B.empTel AS '직속상관연락처'
+ FROM empTbl A
+ INNER JOIN empTbl B
+ ON A.manager = B.emp
+ WHERE A.emp = '우대리';
+ -- a에서는 직원 / 전화번호는 b에서 
+ -- so, a.emp했지만, 전화번호는 b에서 호출 됨.
+ 
+ 
+ 
