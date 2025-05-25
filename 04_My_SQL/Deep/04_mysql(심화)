@@ -101,4 +101,63 @@ B.empTel AS '직속상관연락처'
  -- so, a.emp했지만, 전화번호는 b에서 호출 됨.
  
  
+ -- 모든 문제는employees 데이터베이스에서 수행한다.  
+-- 3번 현재 재직중인 직원의 정보를 출력하세요
+ -- 출력항목: emp_no, first_name, last_name, title
+ use employees;
  
+ select E.emp_no, E.first_name, E.last_name, T.title 
+ from employees E
+ inner join titles T 
+ on T.emp_no = E.emp_no where T.to_date = '9999-01-01';
+ 
+ -- 4번 현재 재직 중인 직원 정보를 출력
+ -- 직원 기본 정보 모두, title,, salary
+ select E.emp_no, E.birth_date, E.first_name, E.last_name, E.gender, E.hire_date, S.salary, T.title
+ from employees E
+ inner join titles T
+ ON T.emp_no = E.emp_no
+ inner join salaries S
+ on S.emp_no = T.emp_no
+where t.to_date = '9999-01-01' and S.to_date = '9999-01-01';
+
+-- 5번 현재 재직 중인 직원의 정보를 출력하세요.
+-- ○ 출력항목:  emp_no, first_name, last_name, department
+-- ○ 정렬: emp_no 오름 차순
+select E.emp_no, E.first_name, E.last_name, D.dept_name
+from employees E
+INNER JOIN dept_emp DE ON E.emp_no = DE.emp_no
+INNER JOIN departments D ON DE.dept_no = D.dept_no
+WHERE DE.to_date = '9999-01-01'
+ORDER BY E.emp_no;
+
+
+-- 6번 부서별 재직중인 직원의 수를 출력하세요.
+-- ○ 출력항목: 부서번호, 부서명, 인원수
+-- ○ 정렬: 부서번호오름차순
+select D.dept_no, D.dept_name, count(*)
+from departments D
+inner join dept_manager DE
+on DE.dept_no = D.dept_no
+where DE.dept_no = '9999-01-01';
+
+select D.dept_no, D.dept_name, count(*)
+from departments D
+inner join dept_emp DE
+on DE.dept_no = D.dept_no
+inner join employees E
+on E.emp_no = DE.emp_no
+where DE.to_date = '9999-01-01'
+group by d.dept_no
+order by d.dept_no;
+
+-- 7번 직원번호가 10209인 직원의 부서 이동 히스토리를 출력하세요.
+-- ○ 출력항목: emp_no, first_name, last_name, dept_name, from_date, to_date
+select E.emp_no, E.first_name, E.last_name, D.dept_name, DE.from_date, DE.to_date
+from employees E
+inner join dept_emp DE
+on E.emp_no = DE.emp_no
+inner join departments D
+on D.dept_no = DE.dept_no
+where E.emp_no = '10209'
+order by E.emp_no, de.from_date;
