@@ -97,3 +97,82 @@ public class CalculatorTest {
 }
 ```
 
+---------------------------------------------------------------------------------------------------------------
+## ✅ 1. main vs test: 왜 나누는가?
+
+| 구분                   | 목적                                |
+| -------------------- | --------------------------------- |
+| `src/main/java`      | 애플리케이션 **실제 실행 코드** (비즈니스 로직 포함)  |
+| `src/test/java`      | **테스트 전용 코드** (예: 단위 테스트, 통합 테스트) |
+| `src/main/resources` | 애플리케이션 설정 파일, DB config 등 (운영용)   |
+| `src/test/resources` | 테스트용 설정, 테스트 데이터 등                |
+
+### 🔍 왜 구분하는가?
+- 운영용 코드와 테스트 코드를 분리해서 유지보수가 쉽고 안정성 확보 가능
+- maven, gradle 빌드시 test는 제외하거나 따로 테스트 전용으로 실행 가능
+- 테스트 코드는 배포 대상이 아니기 때문에 main과 분리하는 게 표준
+
+## ✅ 2. 패키지 및 클래스의 용도 설명
+### 📦 common 패키지
+- 공통 유틸 클래스, 설정 등 여러 클래스에서 공유하는 기능  
+- 예: JDBCUtil  
+→ DB 연결, 닫기 등의 반복되는 작업을 처리하는 클래스
+
+```java
+public class JDBCUtil {
+    public static Connection getConnection() { ... }
+    public static void close() { ... }
+}
+```
+
+### 📦 dao (Data Access Object)    
+- DB와 직접 통신하는 계층  
+- 쿼리를 실행하고 데이터를 주고받는 로직 담당  
+- DAO는 "데이터 접근을 추상화"해서 비즈니스 로직과 DB 코드를 분리해줌
+```java
+public class UserDao {
+    public List<User> findAll() { ... }
+    public void insert(User user) { ... }
+}
+```
+
+### 📦 domain (또는 model, entity)
+- 실제 데이터 구조를 표현하는 클래스
+- 예: User, Product, Order 등
+- DB 테이블과 1:1 매핑되는 경우가 많음
+```java
+public class User {
+    private String id;
+    private String name;
+    private String role;
+}
+``` 
+
+### 📦 test (테스트 전용 패키지)
+- JUnit으로 기능별 단위 테스트 클래스 작성
+- 예: CrudTest, ConnectionTest, DbTest
+- → @Test 붙여서 실제 기능이 잘 동작하는지 확인
+
+```java
+@Test
+@DisplayName("회원 추가 테스트")
+void insertUser() { ... }
+```
+
+- ### ✅ 예시 흐름
+1. UserDao (DAO) → DB에 접근해서 User 데이터를 가져옴
+2. User (Domain) → UserDao가 반환한 데이터를 표현
+3. JDBCUtil (Common) → DB 연결을 도와줌
+4. CrudTest (Test) → UserDao.insert()가 잘 작동하는지 테스트함
+
+- ### ✅ 결론
+| 구성 요소        | 역할 요약            |
+| ------------ | ---------------- |
+| `main`       | 실제 프로그램 실행 코드    |
+| `test`       | 단위/통합 테스트 코드     |
+| `common`     | 유틸리티, 공통 기능 클래스  |
+| `dao`        | 데이터베이스와 통신하는 로직  |
+| `domain`     | 데이터를 표현하는 모델 클래스 |
+| `test (패키지)` | 테스트를 위한 클래스      |
+
+
