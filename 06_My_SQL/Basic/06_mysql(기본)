@@ -1,73 +1,85 @@
--- sqldb 데이터베이스에 다음과 같은 컬럼을 가지는 테이블 tbl1을 생성하고,
+-- 1번 sqldb 데이터베이스에 다음과 같은 컬럼을 가지는 테이블tbl1을 생성하고, 
 -- 자동 생성된 인덱스 목록을 확인하세요.
-use sqldb;
+-- ○ 컬럼목록
+-- a INT PRIMARY KEY
+-- b INT
+-- c INT
+-- ---------------------------------
+USE sqldb;
+drop table tbl1;
+create table tbl1 (
+a	int		primary key,
+b	int		,
+c	int 	
+ );
+ show index from tbl1;
+ 
+-- 2번 -
+ drop table tbl2;
+ create table tbl2
+ (
+a	int		primary key,
+b	int		unique,
+c	int 	unique
+ );
+ 
+ show index from tbl2;
 
-drop table if exists tbl1;
-create table tbl1(
-	a int primary key,
-    b int,
-    c int
-);
-show index from tbl1;
+ -- 3번
+drop table tbl3;
+create table tbl3( 
+a	int		unique,
+b	int		unique,
+c	int 	unique,
+d	int
+ );
+  show index from tbl3;
+  
+  -- 4번
+  drop table tbl4;
+  create table tbl4( 
+a	int		unique not null,
+b	int		unique,
+c	int 	unique,
+d	int
+ );
+ 
+   show index from tbl4;
 
--- sqldb 데이터베이스에 다음과 같은 컬럼을 가지는 테이블 tbl2를 생성하고,
--- 자동 생성된 인덱스 목록을 확인하세요.
-
-create table tbl2(
-	a int primary key,
-    b int unique,
-    c int unique,
-    d int
-);
-show index from tbl2;
-
--- sqldb 데이터베이스에 다음과 같은 컬럼을 가지는 테이블 tbl3를 생성하고,
--- 자동 생성된 인덱스 목록을 확인하세요.
-create table tbl3(
-a int unique,
-b int unique,
-c int unique,
-d int
-);
-show index from tbl3;
-
--- sqldb 데이터베이스에 다음과 같은 컬럼을 가지는 테이블 tbl4를 생성하고, 자동 생성된 인덱스 목록을 확인하세요.
-create table tbl4(
-a INT UNIQUE NOT NULL,
-b INT UNIQUE,
-c INT UNIQUE,
-d INT
-);
-show index from tbl4;
-
--- sqldb 데이터베이스에 다음과 같은 컬럼을 가지는 테이블 tbl5를 생성하고, 자동 생성된 인덱스 목록을 확인하세요.
-create table tbl5(
-a INT UNIQUE NOT NULL,
-b INT UNIQUE,
-c INT UNIQUE,
-d INT PRIMARY KEY
-);
-show index from tbl5;
-
--- testdb에 다음 컬럼 목록을 가지는 usertbl을 만드세요.
-create table testdb(
-userID CHAR(8) NOT NULL PRIMARY KEY,
-name VARCHAR(10) NOT NULL,
-birthYear INT NOT NULL,
-addr NCHAR(2) NOT NULL
-);
-
--- 아래 데이터를 추가하고, 클러스터형 인덱스의 테이블 내용을 확인하세요.
-insert into testdb values ('LSG', '이승기', 1987, '서울'),
-('KBS', '김범수', 1979, '경남'),
-('KKH', '김경호', 1971, '전남'),
-('JYP', '조용필', 1950, '경기'),
-('S나', '성시경', 1979, '서울');
-show index from testdb;
-
--- ALTER를 사용하여 usertbl에서 PRIMARY KEY 제약조건을 제거하고, name 컬럼에 pk_name이라는 제약조건명으로 기본키를 설정하세요.
-desc usertbl;
-alter table usertbl drop primary key;
-alter table usertbl add constraint pk_name primary key(name);
+-- 5번
+  drop table tbl5;
+  create table tbl5( 
+a	int		unique not null,
+b	int		unique,
+c	int 	unique,
+d	int		primary key
+ );
+ 
+   show index from tbl5;
+   
+ --  6번
+ use testdb;
+  drop table if exists usertbl;
+  create table usertbl (
+  userID	char(8)		not null	primary key,
+  name		varchar(10)	not null,
+  birthYear int			not null,
+  addr		nchar(2)	not null
+  );
+  
+  -- 7번
+ INSERT INTO usertbl VALUES('LSG', '이승기', 1987, '서울');
+ INSERT INTO usertbl VALUES('KBS', '김범수', 1979, '경남');
+ INSERT INTO usertbl VALUES('KKH', '김경호', 1971, '전남');
+ INSERT INTO usertbl VALUES('JYP', '조용필', 1950, '경기');
+ INSERT INTO usertbl VALUES('S나', '성시경', 1979, '서울');
+ SELECT * FROM usertbl;
+ 
+ 
+-- 8번
+ALTER table usertbl drop primary key;  -- 기존 usertbl의 기본키를 삭제하고 
+alter table usertbl 
+add constraint pk_name primary key(name);
+-- name이 새로운 기본키며, 제약 조건의 이름은 pk_name이다.
 
 select * from usertbl;
