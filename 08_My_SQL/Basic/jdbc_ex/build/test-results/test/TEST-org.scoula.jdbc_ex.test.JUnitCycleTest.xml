@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="org.scoula.jdbc_ex.test.JUnitCycleTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2025-05-27T10:04:30" hostname="BOOK-POJNNP9T8B" time="0.03">
+  <properties/>
+  <testcase name="test1()" classname="org.scoula.jdbc_ex.test.JUnitCycleTest" time="0.023"/>
+  <testcase name="test2()" classname="org.scoula.jdbc_ex.test.JUnitCycleTest" time="0.002"/>
+  <testcase name="test3()" classname="org.scoula.jdbc_ex.test.JUnitCycleTest" time="0.003"/>
+  <system-out><![CDATA[@BeforeAll
+@BeforeEach
+test1
+@AfterEach
+@BeforeEach
+test2
+@AfterEach
+@BeforeEach
+test3
+@AfterEach
+@AfterAll
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
