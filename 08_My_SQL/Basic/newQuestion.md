@@ -2,6 +2,7 @@
 - 프로젝트명 : jdbc_ex (임의로 변경 가능)    
 - 패키지명  : org.scoula.jdbc_ex.test  
 - 클래스명  : JUnitCycleTest  
+![image](https://github.com/user-attachments/assets/568a8776-7954-4c13-9ceb-bcb9249f76d3)
 
 
 ## 2. Lombok 라이브러리를 이용하여 다음을 구현하시오.  
