@@ -1,0 +1,8 @@
+USE scoula_db;
+
+CREATE TABLE users (
+    id VARCHAR(20) PRIMARY KEY,
+    password VARCHAR(100),
+    name VARCHAR(50),
+    role VARCHAR(20)
+);
